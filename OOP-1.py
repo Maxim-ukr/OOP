@@ -1,4 +1,6 @@
 # Class
+from itertools import filterfalse
+
 
 # Опис класу
 
@@ -242,3 +244,262 @@
 # tel1.battery_lower(vidsotok)
 #
 # print(f"{tel1.number, tel1.battery_level}")
+
+# ______________________________________________________________________
+#
+# Завдання 1
+# Створіть клас Проект з атрибутами:
+#  назва
+#  виділений кошторис
+#  загальні витрати
+#  чи завершений(за замовчуванням False)
+#  час виконання(за замовчуванням 0 місяців)
+#  список необхідних задач
+# Додайте методи:
+#  вивід інформації: назва, час виконання, необхідні
+# задачі
+#  добавити нову задачу
+#  розбити задачу на під-задачі: передається назва задачі
+# та список під-задач
+#  виконати задачу, передається назва, час та ціна
+# виконання
+#  поповнення кошторису
+
+# class Project:
+#     def __init__(self, name, budget, tasks):
+#         self.name = name
+#         self.budget = budget
+#         self.tasks = tasks
+#
+#         self.expenses = 0
+#         self.is_finished = False
+#         self.spent_time = 0  # місяці
+#
+#     def display_info(self):
+#         print(f"Проєкт {self.name}")
+#         print(f'Час виконання {self.spent_time} місяців')
+#         print(f'Витрачено {self.expenses}/{self.budget}$')
+#         print(f'Залишилось {self.budget - self.expenses}$')
+#
+#         if self.is_finished: # якщо проект завершений
+#             print("Стан проекту: завершений")
+#         else:
+#             print("Стан проекту: незавершений")
+#
+#             print('Задачі що залишились:')
+#             for task in self.tasks:
+#                 print(f'   - {task}')
+#         print()
+#         print()
+#
+#     def add_task(self, task):
+#         self.tasks.append(task)
+#
+#     def divide_task(self, task, subtasks):
+#         if task not in self.tasks:
+#             print(f'Немає такої задачі {task}')
+#             return
+#
+#         # задача є в списку задач self.tasks
+#         self.tasks.remove(task)
+#
+#         self.tasks += subtasks
+#
+#     def do_task(self, task, duration, price):
+#         # чи є така задача
+#         if task not in self.tasks:
+#             print(f'Немає такої задачі {task}')
+#             return
+#
+#         # чи вистачає бюджету
+#         free_money = self.budget - self.expenses
+#         if price > free_money:
+#             print("Недостатньо коштів")
+#             return
+#
+#         # виконуємо задачу
+#         self.expenses += price
+#         self.tasks.remove(task)
+#         self.spent_time += duration
+#
+#         # чи завершений проект
+#         if len(self.tasks) == 0:
+#             self.is_finished = True
+#
+#     def update_budget(self, amount):
+#         self.budget += amount
+#
+#
+#
+# project = Project(name='Ігрушка',
+#                   budget=10_000,
+#                   tasks=['Знайти інвесторів',
+#                          'Придумати загальну ідею'])
+#
+# project.display_info()
+#
+# project.add_task('Вибрати ПЗ для гри')
+#
+# project.display_info()
+#
+# project.divide_task('Організувати бенкет',
+#                     ['витратити бюджет']
+#                     )
+#
+# project.divide_task('Придумати загальну ідею',
+#                     ['Обрати між 2D та 3D',
+#                      'Придумати сюжет',
+#                      'Прописати персонажів']
+#                     )
+#
+# project.display_info()
+#
+# project.do_task('Придумати сюжет', 6, 1000)
+# project.do_task('Обрати між 2D та 3D', 3, 200)
+# project.do_task('Прописати персонажів', 15, 6000)
+#
+# project.update_budget(2500)
+#
+# project.do_task('Знайти інвесторів', 10, 3000)
+# project.do_task('Вибрати ПЗ для гри', 5, 1800)
+#
+# project.display_info()
+
+# Завдання 2
+# Створіть клас Телефон з атрибутами:
+#  максимальний обсяг пам’яті
+# Практичне завдання
+#  зайнята пам’ять
+#  чи включений(за замовчуванням False)
+#  встановлені додатки у вигляді словника, де ключ –
+# назва додатку, значення – обсяг пам’яті
+# Додайте методи:
+#  вивести інформацію про використання пам’яті
+#  видалити додаток
+#  встановити новий додаток, якщо пам’яті достатньо
+#  оновити додаток(нова версія може займати іншу
+# кількість пам’яті)
+#  запустити додаток, якщо він є і якщо телефон
+# вкючений
+#  включити телефон
+#  виключити телефон
+
+class Telefon:
+    def __init__(self, memory, apps):
+        self.memory = memory
+        self.apps = apps
+
+        self. is_on = False
+        # рахуємо стартову память використану
+        self.used_memory = 0
+        for app in self.apps:
+            self.used_memory += self.apps[app]
+
+    def print_memoruinfo(self):
+        print(f"Залишилось вільної памяті {self.memory - self.used_memory}")
+        print("Встановлені додатки: ")
+        for app in self.apps:
+            print(f"Встановлениый додаток {app} - {self.apps[app]} ГБ")
+
+        print()
+        print()
+
+    def delete_app(self,remuve_app):
+        if remuve_app not in self.apps:
+            print(f"Додаток {remuve_app} не встановлений.")
+            return
+
+        app_memory = self.apps.pop(remuve_app)
+
+        self.used_memory -= app_memory
+
+    def install_app(self, app_name, app_memory):
+        if self.used_memory + self.memory >= app_memory:
+
+            if app_name in self.apps:
+                print(f"Додаток {app_name} вже встановлений.")
+                return
+
+            self.apps[app_name] = app_memory
+            self.used_memory += app_memory
+
+        else:
+            print("Недостатньо памяті")
+
+    def update_app(self, app_name, new_memory):
+        free_memory = self.memory - self.used_memory
+        app_memory = self.apps[app_name]
+        need_memory = new_memory - app_memory
+
+        if app_name not in self.apps:
+            print("Немає такої програми.")
+            return
+
+        if free_memory >= need_memory:
+            self.apps[app_name] = new_memory
+            self.used_memory += need_memory
+        else:
+            print("Недостатньо памяті")
+
+    def tern_on(self):
+        self.is_on = True
+
+    def tern_off(self):
+        self.is_on = False
+
+
+telefon = Telefon(128,
+                  {"Google": 30, 'YouTube': 10})
+telefon.print_memoruinfo()
+
+telefon.delete_app("YouTube")
+telefon.print_memoruinfo()
+
+telefon.install_app("angru berds", 20)
+telefon.print_memoruinfo()
+
+telefon.update_app("angru berds", 50)
+telefon.print_memoruinfo()
+
+
+# Завдання 3
+# Створіть клас Автомобіль з атрибутами:
+#  марка
+#  пробіг
+#  рівень пального
+#  витрата пального(л/км)
+#  чи є справним(за замовчуванням True)
+# Реалізуйте методи:
+#  проїхати певну відстань, має змінитись пробіг та рівень
+# пального, якщо автомобіль справний та достатньо
+# пального
+# З ймовірністю 40% автомобіль може зламатись
+#  ремонт
+#  поповнення пального
+# Завдання 4
+# Створіть клас Студент з атрибутами:
+#  ім’я
+#  словник з предметами, де ключ – назва предмету,
+# значення – список оцінок
+# Додайте методи:
+#  додати новий предмет
+#  видалити предмет
+#  вчити предмет(якщо отримана оцінка, то додати про це
+# інформацію)
+#  отримати середню оцінку за конкретним предметом
+#  вивести загальну інформацію: ім’я та список предметів
+# з середніми оцінками
+
+# Завдання 5
+# Створіть клас Магазин з атрибутами:
+#  назва
+#  заробіток
+#  словник з товарами, де ключ – назва товару, значення –
+# кількість на складі
+#  словник з товарами, де ключ – назва товару, значення –
+# ціна
+# Додайте методи:
+#  вивід інформації: назва та список доступних товарів
+#  поповнення складу певним товаром(може бути новий)
+#  оформлення замовлення, якщо товар у достатній
+# кількості доступни
