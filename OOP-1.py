@@ -169,3 +169,76 @@
 #     def __init__(self, brand, year, is_ready=False):
 #         self.brande = brand
 
+# _____________________DZ__________________________
+
+# Завдання 1
+# Створіть клас Cart(кошик клієнта магазину) з атрибутами
+# client(ім’я клієнта) та items(список товарів).
+# Додайте метод який додає новий товар до кошика
+# Додайте метод який видаляє товар з кошика
+# Додайте метод для виведення інформації про кошик
+
+# class Cart():
+#     def __init__(self, client, items):
+#         self.client = client
+#         self.items = items
+#
+#     def add(self, item):
+#         self.items.append(item)
+#
+#     def delleting(self, item):
+#         if item in self.items:
+#             self.items.remove(item)
+#
+#     def print_cart(self):
+#         print(f"У клієнта {self.client} в кошику наступний товар: ")
+#         for item in self.items:
+#             print(item)
+#
+# item = ['apple']
+#
+# user1 = Cart("User1", item)
+#
+# user1.add('banana')
+# user1.add('apricot')
+# user1.add('carrot')
+#
+# user1.print_cart()
+#
+# user1.delleting("watermellon")
+# user1.delleting("carrot")
+#
+# user1.print_cart()
+
+# Завдання 2
+# Створіть клас Phone з атрибутами number та battery_level.
+# Додайте метод який зменшує заряд телефона(на скільки
+# зменшити відсотків передається як параметр), якщо він
+# опуститься нижче 20%, вивести повідомлення
+# Додайте метод для виведення інформації про телефон
+#
+# class Phone():
+#     def __init__(self, number, battery_level):
+#         self.number = number
+#         self.battery_level = battery_level
+#
+#
+#     def battery_lower(self, vidsotok):
+#         if self.battery_level < vidsotok:
+#             print(f"Неможливо зменьшити заряд на {vidsotok}%, оскільки в телефоні вже меньше заряду.")
+#         else:
+#             self.battery_level -= vidsotok
+#             print(f"Заряд зменшено на {vidsotok}%.")
+#             if self.battery_level < 20:
+#                 print(f"Заряд телефону меньше ніж 20%, а саме {self.battery_level}%")
+#
+#
+# tel1 = Phone("+380XX-YYY-OOOO", 30)
+#
+# print(f"{tel1.number, tel1.battery_level}")
+#
+# vidsotok = int(input("Введіть наскільки відсотків сів аккумулятор: "))
+#
+# tel1.battery_lower(vidsotok)
+#
+# print(f"{tel1.number, tel1.battery_level}")
