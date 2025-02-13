@@ -384,82 +384,82 @@ from itertools import filterfalse
 #  включити телефон
 #  виключити телефон
 
-class Telefon:
-    def __init__(self, memory, apps):
-        self.memory = memory
-        self.apps = apps
-
-        self. is_on = False
-        # рахуємо стартову память використану
-        self.used_memory = 0
-        for app in self.apps:
-            self.used_memory += self.apps[app]
-
-    def print_memoruinfo(self):
-        print(f"Залишилось вільної памяті {self.memory - self.used_memory}")
-        print("Встановлені додатки: ")
-        for app in self.apps:
-            print(f"Встановлениый додаток {app} - {self.apps[app]} ГБ")
-
-        print()
-        print()
-
-    def delete_app(self,remuve_app):
-        if remuve_app not in self.apps:
-            print(f"Додаток {remuve_app} не встановлений.")
-            return
-
-        app_memory = self.apps.pop(remuve_app)
-
-        self.used_memory -= app_memory
-
-    def install_app(self, app_name, app_memory):
-        if self.used_memory + self.memory >= app_memory:
-
-            if app_name in self.apps:
-                print(f"Додаток {app_name} вже встановлений.")
-                return
-
-            self.apps[app_name] = app_memory
-            self.used_memory += app_memory
-
-        else:
-            print("Недостатньо памяті")
-
-    def update_app(self, app_name, new_memory):
-        free_memory = self.memory - self.used_memory
-        app_memory = self.apps[app_name]
-        need_memory = new_memory - app_memory
-
-        if app_name not in self.apps:
-            print("Немає такої програми.")
-            return
-
-        if free_memory >= need_memory:
-            self.apps[app_name] = new_memory
-            self.used_memory += need_memory
-        else:
-            print("Недостатньо памяті")
-
-    def tern_on(self):
-        self.is_on = True
-
-    def tern_off(self):
-        self.is_on = False
-
-
-telefon = Telefon(128,
-                  {"Google": 30, 'YouTube': 10})
-telefon.print_memoruinfo()
-
-telefon.delete_app("YouTube")
-telefon.print_memoruinfo()
-
-telefon.install_app("angru berds", 20)
-telefon.print_memoruinfo()
-
-telefon.update_app("angru berds", 50)
-telefon.print_memoruinfo()
+# class Telefon:
+#     def __init__(self, memory, apps):
+#         self.memory = memory
+#         self.apps = apps
+#
+#         self. is_on = False
+#         # рахуємо стартову память використану
+#         self.used_memory = 0
+#         for app in self.apps:
+#             self.used_memory += self.apps[app]
+#
+#     def print_memoruinfo(self):
+#         print(f"Залишилось вільної памяті {self.memory - self.used_memory}")
+#         print("Встановлені додатки: ")
+#         for app in self.apps:
+#             print(f"Встановлениый додаток {app} - {self.apps[app]} ГБ")
+#
+#         print()
+#         print()
+#
+#     def delete_app(self,remuve_app):
+#         if remuve_app not in self.apps:
+#             print(f"Додаток {remuve_app} не встановлений.")
+#             return
+#
+#         app_memory = self.apps.pop(remuve_app)
+#
+#         self.used_memory -= app_memory
+#
+#     def install_app(self, app_name, app_memory):
+#         if self.used_memory + self.memory >= app_memory:
+#
+#             if app_name in self.apps:
+#                 print(f"Додаток {app_name} вже встановлений.")
+#                 return
+#
+#             self.apps[app_name] = app_memory
+#             self.used_memory += app_memory
+#
+#         else:
+#             print("Недостатньо памяті")
+#
+#     def update_app(self, app_name, new_memory):
+#         free_memory = self.memory - self.used_memory
+#         app_memory = self.apps[app_name]
+#         need_memory = new_memory - app_memory
+#
+#         if app_name not in self.apps:
+#             print("Немає такої програми.")
+#             return
+#
+#         if free_memory >= need_memory:
+#             self.apps[app_name] = new_memory
+#             self.used_memory += need_memory
+#         else:
+#             print("Недостатньо памяті")
+#
+#     def tern_on(self):
+#         self.is_on = True
+#
+#     def tern_off(self):
+#         self.is_on = False
+#
+#
+# telefon = Telefon(128,
+#                   {"Google": 30, 'YouTube': 10})
+# telefon.print_memoruinfo()
+#
+# telefon.delete_app("YouTube")
+# telefon.print_memoruinfo()
+#
+# telefon.install_app("angru berds", 20)
+# telefon.print_memoruinfo()
+#
+# telefon.update_app("angru berds", 50)
+# telefon.print_memoruinfo()
 
 
 # Завдання 3
