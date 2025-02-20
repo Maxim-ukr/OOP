@@ -98,13 +98,13 @@ class Cart:
 # c = a + b
 #
 
-cart1 = Cart(['TV', 'laptop'], 170)
-cart2 = Cart(['phone'], 65)
-
-cart3 = Cart(['laptop', 'TV'], 170)
-
-print(cart1 == cart3)
-
+# cart1 = Cart(['TV', 'laptop'], 170)
+# cart2 = Cart(['phone'], 65)
+#
+# cart3 = Cart(['laptop', 'TV'], 170)
+#
+# print(cart1 == cart3)
+#
 #
 # print(cart1)
 # text = str(cart2)
@@ -265,10 +265,6 @@ class Playlist:
 
     def remove_song(self, song):
         self.songs.remove(song)
-
-
-
-
 
 
 song1 = Song("Imagine", "John Lennon")
