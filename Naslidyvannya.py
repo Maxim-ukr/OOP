@@ -151,52 +151,52 @@
 #  rest() – відпочинок(відновлює hp до максимального)
 #  heal(heal_hp) – збільшує hp на heal_hp
 
-class Character():
-    def __init__(self, name, max_hp, level, intelligence, strength, dexterity, mana, defense):
-        self.name = name
-        self.max_hp = max_hp
-        self.hp = max_hp
-        self.level = level
-        self.intelligence = intelligence
-        self.strength = strength
-        self.dexterity = dexterity
-        self.mana = mana
-        self.defense = defense
-
-    def attack(self):
-        pass
-
-    def take_damage(self, damage):
-        if damage > self.defense:
-            self.hp -= damage - self.defense
-
-        if self.hp <= 0:
-            self.hp = 0
-            print(f"{self.name} загинув!")
-
-    def level_up(self):
-        if self.level < 20:
-            self.level += 1
-
-    def increase_stat(self, stat):
-        if stat == 'intelligence':
-            self.intelligence += 1
-        elif stat == 'strength':
-            self.strength += 1
-        elif stat == "dexterity":
-            self.dexterity += 1
-        elif stat == "mana":
-            self.mana += 1
-        else:
-            self.defense += 1
-
-    def rest(self):
-        self.hp = self.max_hp
-
-    def heal(self, heal_hp):
-        self.hp += heal_hp
-        if self.hp > self.max_hp:
-            self.hp = self.max_hp
+# class Character():
+#     def __init__(self, name, max_hp, level, intelligence, strength, dexterity, mana, defense):
+#         self.name = name
+#         self.max_hp = max_hp
+#         self.hp = max_hp
+#         self.level = level
+#         self.intelligence = intelligence
+#         self.strength = strength
+#         self.dexterity = dexterity
+#         self.mana = mana
+#         self.defense = defense
+#
+#     def attack(self):
+#         pass
+#
+#     def take_damage(self, damage):
+#         if damage > self.defense:
+#             self.hp -= damage - self.defense
+#
+#         if self.hp <= 0:
+#             self.hp = 0
+#             print(f"{self.name} загинув!")
+#
+#     def level_up(self):
+#         if self.level < 20:
+#             self.level += 1
+#
+#     def increase_stat(self, stat):
+#         if stat == 'intelligence':
+#             self.intelligence += 1
+#         elif stat == 'strength':
+#             self.strength += 1
+#         elif stat == "dexterity":
+#             self.dexterity += 1
+#         elif stat == "mana":
+#             self.mana += 1
+#         else:
+#             self.defense += 1
+#
+#     def rest(self):
+#         self.hp = self.max_hp
+#
+#     def heal(self, heal_hp):
+#         self.hp += heal_hp
+#         if self.hp > self.max_hp:
+#             self.hp = self.max_hp
 
 
 # Завдання 2
@@ -208,34 +208,59 @@ class Character():
 #  unshield() – зменшує стат defense на 4+level
 #  heal_ally(ally) – лікує союзника на 5 + 2*level + 0.5*mana
 
-class Paladin(Character):
-    def attack(self):
-        if self.mana >= 5:
-            dam = 4 * self.strength
-            self.mana -= 5
-        else:
-            dam = self.strength
-        return dam
-
-
-    def shield(self):
-        self.defense += 4 + self.level
-
-    def unshield(self):
-        self.defense -= 4 + self.level
-
-    def heal_ally(self, ally):
-        heal_hp = 5 + 2*self.level + 0.5*self.mana
-
-        ally.heal(heal_hp)
-
-paladin1 = Paladin("Ivan", 100, 6, 5, 5, 3, 6, 5)
-paladin2 = Character("Igor", 100, 6, 5, 5, 3, 6, 5)
-
-paladin2.take_damage(10)
-
-print(paladin2.hp)
-
-paladin1.heal_ally(paladin2)
-
-print(paladin2.hp)
+# class Paladin(Character):
+#     def attack(self):
+#         if self.mana >= 5:
+#             dam = 4 * self.strength
+#             self.mana -= 5
+#         else:
+#             dam = self.strength
+#         return dam
+#
+#
+#     def shield(self):
+#         self.defense += 4 + self.level
+#
+#     def unshield(self):
+#         self.defense -= 4 + self.level
+#
+#     def heal_ally(self, ally):
+#         heal_hp = 5 + 2*self.level + 0.5*self.mana
+#
+#         ally.heal(heal_hp)
+#
+# paladin1 = Paladin("Ivan", 100, 6, 5, 5, 3, 6, 5)
+# paladin2 = Character("Igor", 100, 6, 5, 5, 3, 6, 5)
+#
+# paladin2.take_damage(10)
+#
+# print(paladin2.hp)
+#
+# paladin1.heal_ally(paladin2)
+#
+# print(paladin2.hp)
+#
+# paladin2.take_damage(paladin1.attack())
+#
+# print(paladin2.hp)
+#
+# class Mage(Character):
+#     def fireball(self):
+#         if self.mana >=5:
+#             dem = 3 + 2 * self.intelligence
+#             self.mana -= 5
+#             return dem
+#         else:
+#             return 0
+#
+#     def attack(self):
+#         if self.mana >=3:
+#             dem = 4 + 3 * self.intelligence
+#             self.mana -= 3
+#             return dem
+#         else:
+#             return 0
+#
+#     def heal_ally(self, ally):
+#         heal_hp = 3 + self.level + 3 * self.intelligence
+#         ally.heal(heal_hp)
