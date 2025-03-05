@@ -8,38 +8,38 @@
 #  play(activity_level) – абстрактний метод
 #  make_sound() – просто pass
 
-class Pet:
-    def __init__(self, name, satiety = 50, energy = 50):
-        self.name = name
-        self.satiety = satiety
-        self.energy = energy
-
-    def sleep(self):
-        self.energy = 100
-
-    def eat(self, food_amont):
-        self.satiety += food_amont
-
-        if self.satiety > 100:
-            self.satiety = 100
-
-    def play(self, activity_level): # зменьшує енергію та ситість на рівень актіветі_левел
-        # self.satiety -= activity_level
-        # self.energy -= activity_level
-        #
-        # if self.satiety <= 0:
-        #     print(f"{self.name} загрався й здох від голоду!")
-        #
-        # if self.energy == 0:
-        #     print(f"{self.name} загрався й вирубився після гри!")
-        #     self.sleep()
-        # elif self.energy < 0:
-        #     print(f"{self.name} не вистачило сил, щоб погратися й він вирубився недогравши!")
-        #     self.sleep()
-        pass
-
-    def make_sound(self):
-        pass
+# class Pet:
+#     def __init__(self, name, satiety = 50, energy = 50):
+#         self.name = name
+#         self.satiety = satiety
+#         self.energy = energy
+#
+#     def sleep(self):
+#         self.energy = 100
+#
+#     def eat(self, food_amont):
+#         self.satiety += food_amont
+#
+#         if self.satiety > 100:
+#             self.satiety = 100
+#
+#     def play(self, activity_level): # зменьшує енергію та ситість на рівень актіветі_левел
+#         # self.satiety -= activity_level
+#         # self.energy -= activity_level
+#         #
+#         # if self.satiety <= 0:
+#         #     print(f"{self.name} загрався й здох від голоду!")
+#         #
+#         # if self.energy == 0:
+#         #     print(f"{self.name} загрався й вирубився після гри!")
+#         #     self.sleep()
+#         # elif self.energy < 0:
+#         #     print(f"{self.name} не вистачило сил, щоб погратися й він вирубився недогравши!")
+#         #     self.sleep()
+#         pass
+#
+#     def make_sound(self):
+#         pass
 
 
 
